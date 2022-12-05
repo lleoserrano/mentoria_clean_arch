@@ -5,6 +5,7 @@ import '../../dtos/user_dto.dart';
 import '../auth_datasource.dart';
 
 class AuthRemoteDatasoucerImpl implements AuthDatasource {
+  //Precisa de um client http
   final fake = {'name': 'Leonardo Serrano', 'email': ' '};
   @override
   Future<Either<Exception, UserEntity>> login() async {

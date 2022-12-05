@@ -4,7 +4,7 @@ import '../../entities/user_entity.dart';
 import '../../repositories/auth_repository.dart';
 import 'login_usecase.dart';
 
-class LoginUsecaseImpl implements LoginUsecase {
+class LoginUsecaseImpl implements LoginUseCase {
   final AuthRepository repository;
 
   LoginUsecaseImpl({
