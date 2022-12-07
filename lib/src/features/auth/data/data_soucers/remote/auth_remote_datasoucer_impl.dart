@@ -1,7 +1,10 @@
 import 'package:dartz/dartz.dart';
 
 import '../../../../../../core/domain/http_service.dart';
+import '../../../../../../core/utils/core_const.dart';
+import '../../../domain/entities/auth_entity.dart';
 import '../../../domain/entities/user_entity.dart';
+import '../../dtos/auth_dto.dart';
 import '../../dtos/user_dto.dart';
 import '../auth_datasource.dart';
 
@@ -11,11 +14,15 @@ class AuthRemoteDatasoucerImpl implements AuthDatasource {
     required this.httpService,
   });
   @override
-  Future<Either<Exception, UserEntity>> login() async {
+  Future<Either<Exception, UserEntity>> login(
+      {required AuthEntity authEntity}) async {
     try {
       //Login call
-      final result = await httpService.get('');
-      return Right(UserDto.fromJson(result.data));
+      final result = await httpService.post(
+        CoreConst.apiLoginUrl.value,
+        data: authEntity.toJson(),
+      );
+      return Right(UserDto.fromJson(result.data as Map<String, dynamic>));
     } catch (e) {
       return Left(Exception('Falha login'));
     }

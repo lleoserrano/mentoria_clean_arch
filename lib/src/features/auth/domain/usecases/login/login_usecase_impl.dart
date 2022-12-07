@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 
+import '../../entities/auth_entity.dart';
 import '../../entities/user_entity.dart';
 import '../../repositories/auth_repository.dart';
 import 'login_usecase.dart';
@@ -12,6 +13,7 @@ class LoginUsecaseImpl implements LoginUseCase {
   });
 
   @override
-  Future<Either<Exception, UserEntity>> call() async =>
-      await repository.login();
+  Future<Either<Exception, UserEntity>> call(
+          {required AuthEntity authEntity}) async =>
+      await repository.login(authEntity: authEntity);
 }

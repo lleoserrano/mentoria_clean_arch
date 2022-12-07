@@ -5,4 +5,10 @@ abstract class HttpService {
     String url, {
     Map<String, dynamic>? queryParameters,
   });
+
+  Future<Response<T>> post<T>(
+    String url, {
+    Map<String, dynamic>? queryParameters,
+    dynamic data,
+  });
 }

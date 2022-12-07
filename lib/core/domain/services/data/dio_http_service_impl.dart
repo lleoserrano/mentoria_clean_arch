@@ -19,4 +19,10 @@ class DioHttpServiceImpl implements HttpService {
       {Map<String, dynamic>? queryParameters}) {
     return dio.get<T>(url, queryParameters: queryParameters);
   }
+
+  @override
+  Future<Response<T>> post<T>(String url,
+      {Map<String, dynamic>? queryParameters, data}) {
+    return dio.post<T>(url, queryParameters: queryParameters, data: data);
+  }
 }
