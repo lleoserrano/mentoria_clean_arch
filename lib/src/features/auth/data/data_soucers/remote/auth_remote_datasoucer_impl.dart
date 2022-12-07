@@ -22,7 +22,7 @@ class AuthRemoteDatasoucerImpl implements AuthDatasource {
         CoreConst.apiLoginUrl.value,
         data: authEntity.toJson(),
       );
-      return Right(UserDto.fromJson(result.data as Map<String, dynamic>));
+      return Right(UserDto.fromMap(result.data as Map<String, dynamic>));
     } catch (e) {
       return Left(Exception('Falha login'));
     }
